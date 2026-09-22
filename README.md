@@ -57,3 +57,19 @@ Commands used: `touch`, `nano`, `cat`, `cp`, `mv`, `ls -la`, `uname -a`, `whoami
 ---
 
 ## Lab 1b – Linux services: Apache
+
+Commands: `sudo apt install -y apache2`, `sudo apt install curl`, `curl 127.0.0.1`, `sudo service apache2 status`
+
+| Step | Screenshot |
+|------|-----------|
+| Install Apache | ![](Lab%201/lab1b-apache/01-apache-install.png) |
+| Install complete; `curl` was missing | ![](Lab%201/lab1b-apache/02-apache-installed-curl-missing.png) |
+| Installed curl, "Apache2 Ubuntu Default Page: It works" | ![](Lab%201/lab1b-apache/03-curl-installed-it-works.png) |
+| Service active (running) | ![](Lab%201/lab1b-apache/04-apache-service-status-running.png) |
+
+The status log shows a harmless warning that the server's fully qualified domain name could not be determined, so it defaulted to 127.0.1.1. Setting `ServerName` in the Apache config removes it.
+
+---
+
+## Lab 2 onwards
+To be added.
