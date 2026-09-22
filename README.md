@@ -11,10 +11,10 @@ Environment: VMware Workstation, Ubuntu VM. AWS EC2 (Singapore) and Azure for St
 | 1a-2 | CLI familiarisation | Done |
 | 1b | Linux services – Apache | Done |
 | 2a | TCO comparison | To do |
-| 2b | Cloud VM + bash scripting | To do |
-| 3a / 3b | | To do |
-| 4a / 4b | | To do |
-| Extra | Additional server service | To do |
+| 2b | Cloud VM + bash scripting | Done |
+| 3b | Scripting & cron jobs | Done |
+| 4a | Additional server service (MariaDB) | Done |
+| 3a | DNS & HTTPS certificates | To do |
 
 ---
 
@@ -39,7 +39,18 @@ Commands used: `touch`, `nano`, `cat`, `cp`, `mv`, `ls -la`, `uname -a`, `whoami
 | Corrected `mv`, confirmed with `ls -la` | ![](Lab%201/lab1a-2-cli/07-mv-fixed-ls-la.png) |
 | `uname -a`, `whoami`, `sudo whoami` | ![](Lab%201/lab1a-2-cli/08-uname-whoami-sudo.png) |
 
-**Note:** [add ps and top screenshots]
+### More CLI practice: pwd, man, mkdir, ps, top, permissions, find/grep
+| Step | Screenshot |
+|------|-----------|
+| `pwd` | ![](Lab%201/lab1a-2-more-cli/01-pwd.png) |
+| `man ls` | ![](Lab%201/lab1a-2-more-cli/02-man-ls.png) |
+| `mkdir my lab` typo made two folders instead of one | ![](Lab%201/lab1a-2-more-cli/03-mkdir-typo.png) |
+| Corrected `mkdir mylab` | ![](Lab%201/lab1a-2-more-cli/04-mkdir-fixed.png) |
+| `touch file1.txt` | ![](Lab%201/lab1a-2-more-cli/05-touch-file.png) |
+| `ps` | ![](Lab%201/lab1a-2-more-cli/06-ps.png) |
+| `top` | ![](Lab%201/lab1a-2-more-cli/07-top.png) |
+| `chmod 755`, `chown`, `find` | ![](Lab%201/lab1a-2-more-cli/08-chmod-chown-find.png) |
+| `grep "shalini" /etc/passwd` succeeded after two typo attempts (`/ect/passwd`, `/ect/password`) | ![](Lab%201/lab1a-2-more-cli/09-grep-success.png) |
 
 ### Troubleshooting: VM lost network access
 `apt update` failed with "Temporary failure resolving", and `ping 8.8.8.8` returned "Destination Host Unreachable" / "No route to host". Network connectivity was restored later and `apt update` then worked.
@@ -71,5 +82,50 @@ The status log shows a harmless warning that the server's fully qualified domain
 
 ---
 
-## Lab 2 onwards
-To be added.
+## Lab 2b – Cloud VM (AWS EC2) + Bash scripting
+
+Launched a free-tier Ubuntu EC2 instance (t3.micro) in the Asia Pacific (Singapore) region, connected via browser-based SSH (EC2 Instance Connect), updated packages, then wrote and ran a bash script covering `echo`, `for`, `while`, and `if`.
+
+| Step | Screenshot |
+|------|-----------|
+| Connected to the EC2 instance | ![](Lab%202/lab2b-ec2-bash/01-ec2-connected-terminal.png) |
+| `sudo apt update` | ![](Lab%202/lab2b-ec2-bash/02-apt-update-output.png) |
+| Wrote `myscript.sh` in nano | ![](Lab%202/lab2b-ec2-bash/03-bash-script-file.png) |
+| First run had a `while [$count...]` spacing error | ![](Lab%202/lab2b-ec2-bash/04-bash-script-first-run-error.png) |
+| Fixed the spacing, full script ran correctly | ![](Lab%202/lab2b-ec2-bash/05-bash-script-fixed-run.png) |
+
+**What I learned:** small spacing mistakes in bash (missing a space inside `[ ]`) cause real errors, and reading the error message (`command not found`) pointed straight to the problem.
+
+---
+
+## Lab 3b – Scripting & cron jobs
+
+Created a cron job to run a command automatically every minute and log the output to a file:
+
+`* * * * * echo "Cron job ran" >> /home/ubuntu/cronlog.txt`
+
+| Step | Screenshot |
+|------|-----------|
+| Cron job installed (`crontab -l`) and confirmed running via `cronlog.txt` | ![](Lab%203/lab3b-cron/01-crontab-installed-and-log.png) |
+
+**What I learned:** cron runs scheduled tasks in the background without needing to be logged in, which is how servers automate backups and checks.
+
+---
+
+## Lab 4a – Additional server service: MariaDB
+
+Installed MariaDB, confirmed the service was running, then created and tested a database.
+
+| Step | Screenshot |
+|------|-----------|
+| MariaDB installed and active (running) | ![](Lab%204/lab4a-mariadb/01-mariadb-status-running.png) |
+| Created database `iseatest`, confirmed with `SHOW DATABASES;` | ![](Lab%204/lab4a-mariadb/02-mariadb-create-database-test.png) |
+
+**What I learned:** MariaDB runs as a background service (`systemctl status`) just like Apache, and basic SQL (`CREATE DATABASE`, `SHOW DATABASES`) is enough to confirm a database server works.
+
+---
+
+## Still to do
+- Lab 2a – TCO comparison spreadsheet
+- Lab 3a – DNS and HTTPS (Let's Encrypt / Certbot) — needs a purchased domain
+
