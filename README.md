@@ -10,7 +10,7 @@ Environment: VMware Workstation, Ubuntu VM. AWS EC2 (Singapore) and Azure for St
 | 1a-1 | Virtualisation & Linux setup | Done |
 | 1a-2 | CLI familiarisation | Done |
 | 1b | Linux services – Apache | Done |
-| 2a | TCO comparison | To do |
+| 2a | TCO comparison | Done |
 | 2b | Cloud VM + bash scripting | Done |
 | 3b | Scripting & cron jobs | Done |
 | 4a | Additional server service (MariaDB) | Done |
@@ -82,6 +82,18 @@ The status log shows a harmless warning that the server's fully qualified domain
 
 ---
 
+## Lab 2a – Total Cost of Ownership (TCO) Comparison
+
+Compared a budget inkjet printer against an entry-level laser printer over 5 years, using the lab's default assumptions (750 pages/week, 40 hours/week powered on). Built as an Excel spreadsheet with linked formulas, not hardcoded numbers.
+
+| Step | Screenshot |
+|------|-----------|
+| TCO comparison spreadsheet with reflection answers | ![](Lab%202/lab2a-tco/01-tco-answers.png) |
+
+**Result:** the laser printer is far cheaper over the 5-year period, despite its higher purchase price, because its running cost per page is much lower — break-even is reached in under 4 weeks at this print volume.
+
+---
+
 ## Lab 2b – Cloud VM (AWS EC2) + Bash scripting
 
 Launched a free-tier Ubuntu EC2 instance (t3.micro) in the Asia Pacific (Singapore) region, connected via browser-based SSH (EC2 Instance Connect), updated packages, then wrote and ran a bash script covering `echo`, `for`, `while`, and `if`.
@@ -126,6 +138,4 @@ Installed MariaDB, confirmed the service was running, then created and tested a 
 ---
 
 ## Still to do
-- Lab 2a – TCO comparison spreadsheet
 - Lab 3a – DNS and HTTPS (Let's Encrypt / Certbot) — needs a purchased domain
-
