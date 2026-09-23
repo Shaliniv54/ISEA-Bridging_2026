@@ -88,7 +88,7 @@ Compared a budget inkjet printer against an entry-level laser printer over 5 yea
 
 | Step | Screenshot |
 |------|-----------|
-| TCO comparison spreadsheet with reflection answers | ![](Lab%202/lab2a-tco/01-tco-answers.png) |
+| TCO comparison spreadsheet with reflection answers | ![](Lab%202/lab2b-ec2-bash/Lab2aTCO/tco3.png) |
 
 **Result:** the laser printer is far cheaper over the 5-year period, despite its higher purchase price, because its running cost per page is much lower — break-even is reached in under 4 weeks at this print volume.
 
